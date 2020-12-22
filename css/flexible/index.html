@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document111</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+  }
+  html, body {
+    /* height: 100%; */
+  }
+  .box {
+    font-size: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: green;
+    /* overflow: hidden; */
+    display: flex;
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; */
+    
+  }
+  .col {
+    flex: 1;
+    font-size: 14px;
+    /* width: 10%; */
+    /* box-sizing: border-box; */
+    height: 100%;
+    background-color: yellow;
+    /* float: left; */
+    display: inline-block;
+
+  }
+  .col:nth-child(2n) {
+    background-color: pink;
+  }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="col">f</div>
+    <div class="col">f</div>
+    <div class="col">f</div>
+    <div class="col">f</div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+  </div>
+</body>
+</html>
