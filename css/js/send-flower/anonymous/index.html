@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<scripy>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Book(isbn,title,author){
+            this.isbn=isbn;
+            this.title=title;
+            this.author=author;
+            console.log(this);
+        }
+        //运行方式
+        //JS 语法设计了一个prototype原型链
+        Book.prototype.display=function(isbn,title,author){
+            return  this.isbn+this.title+this.author
+
+        }
+            Book();
+            let js_dontKnow = new Book('1111','aa','bb');
+            console.log(js_dontKnow.isbn);
+            console.log(js_dontKnow.constructor);
+            console.log(js_dontKnow instanceof Book);
+            //
+            console.log(js_dontKnow.display());
+            console.log(js_dontKnow.__proto__);//如何一个对象，都有一个原型 _proto_ 属性会告诉我们它的原型
+            //它的原型
+            //只要链上有，就可以调用
+
+    
+    </script>
+</body>
+</html>
