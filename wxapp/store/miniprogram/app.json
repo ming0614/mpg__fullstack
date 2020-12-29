@@ -1,5 +1,8 @@
 {
   "pages": [
+    "pages/goods/detail",
+    "pages/goods/list",
+   
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
