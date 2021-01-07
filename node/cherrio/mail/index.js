@@ -24,7 +24,7 @@ function getHoneyedWords() {
 async function sendMail(words) {
   let user = "3075624299@qq.com"
   let pass = "tgkrxbkulazvddce"; //  授权码
-  let to = "1471867575@qq.com";
+  let to = "3079405423@qq.com";
   let transporter = nodemailer.createTransport({
     host: "smtp.qq.com",
     port: 587,
@@ -44,7 +44,8 @@ async function sendMail(words) {
 }
 
 // sendMail();
-schedule.scheduleJob({hour: 12, minute: 03}, function() {
+schedule.scheduleJob({hour: 15, minute: 25
+}, function() {
     console.log("启动任务：" + new Date());
     getHoneyedWords()
     .then(res => {
