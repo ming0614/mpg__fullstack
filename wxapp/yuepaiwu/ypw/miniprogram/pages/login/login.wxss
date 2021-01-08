@@ -1,0 +1,9 @@
+.bg-img{
+  background-image:url(https://6d70-mpg-8ghafon5a7e64e30-1304585125.tcb.qcloud.la/QQ%E5%9B%BE%E7%89%8720210108200231.jpg?sign=6871554b4b212f363c195637f98a30ad&t=1610108257) ;
+}
+.mt200 {
+  margin-top: 200rpx;
+}
+.mt200 image {
+  width: 20%;
+}
