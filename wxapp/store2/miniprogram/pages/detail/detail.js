@@ -50,7 +50,7 @@ Page({
   onLoad: function (options) {
     let _id = options._id;
     // 是你的， 不是我的
-    // let _id = 'b45a21d56001699304ea77c21af43d0d';
+    // let _id = '023ce955600029800471b0027a803e7b';
     // console.log(_id);
     this.setData({
       articleID: _id
