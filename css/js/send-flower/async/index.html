@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="btn">点击</button>
+  <script>
+  // 0  但是一般有那么十几毫秒 
+  // 不精确
+  const btn = document.querySelector('.btn');
+  let xhr = new XMLHttpRequest();//ajax 耗时任务
+  setTimeout(() => {
+    console.log('timeout');
+  }, 0)
+  btn.addEventListener('click', () => {
+    console.log('btn clicked');
+  }, false)
+  //封装 ajax 的请求 回调函数
+  function loadAjaxContent(url,callback){
+      console.log(xhr.readyState,'.......1');
+    xhr.open('GET',url);//GET 动词 http 三次握手 建立好通信的通道 几车道
+    console.log(xhr.readyState,'.......2');
+    xhr.onreadystatechange =function(){
+        console.log(xhr.readyState,'........4');
+        // readyState 哪几个值
+        // 0 未初始化,含没有调用open
+        // 1 请求建立 还没有发送 
+        // 2 请求已发送,正在处理中 pending  服务器
+        // 3 请求正在处理中,已有部分数据  大的数据包  分片 断点续传
+        // 4 响应已完成,可以获取并使用服务器的响应了
+        if(xhr.readyState ==4 && xhr.status == 200){
+            callback(JSON.parse(xhr.responseText));   //xhr 时代  ie6  没有发明JSON
+            //json  作为数据传输的格式，比 xml 更轻亮
+        }
+    }
+    xhr.send();
+    console.log(xhr.readyState,'.......3');
+  }
+  // 更精细化的处理异步问题，顺序执行
+  // 阻塞
+  // 异步任务的同步化
+  // 异步任务 callback -> promise+then -> generator -> async await
+  // 先得到阮一峰 git info
+  // 然后得到阮一峰 所有的repo
+  // promise 出现的前夜  回调地狱
+//   loadAjaxContent('http://api.github.com/users/ruanyf',(users)=>{
+//     console.log(users, 'users');
+//     loadAjaxContent('http://api.github.com/users/ruanyf',(repos)=>{
+//         console.log(repos, 'repos');
+//         loadAjaxContent('http://api.github.com/search/issues?q=ruanyf',(results)=>{
+//             console.log(results, 'results');
+//             // loadAjaxContent('http://api.github.com/search/issues?q=ruanyf',(results)=>{})
+//             //     loadAjaxContent('http://api.github.com/search/issues?q=ruanyf',(results)=>{})
+//             //          loadAjaxContent('http://api.github.com/search/issues?q=ruanyf',(results)=>{})
+//             //             loadAjaxContent('http://api.github.com/search/issues?q=ruanyf',(results)=>{})
+//         })
+//   })
+//   });
+  // setTimeout(,200)
+  //resolve reject 就是 交出执行的控制权
+  let p1 = new Promise((resolve,reject) =>{
+      console.log('bbb');  //promise 函数是立即执行的
+      // 耗时的任务封装在promise 内部
+      xhr.open('GET','http://api.github.com/users/ruanyf');
+      xhr.onreadystatechange = function(){
+          if(xhr.readyState == 4 && xhr.status ==200){
+              resolve(JSON.parse(xhr.responseText));
+          }
+      }
+      xhr.send();
+  })
+  p1.then(data => {
+    console.log(data);
+  })
+
+//   let p2= new Promise((resolve,reject) =>{
+//       console.log('ccc');  //promise 函数是立即执行的
+//       // 耗时的任务封装在promise 内部
+//       xhr.open('GET','');
+//       xhr.onreadystatechange = function(){
+//           if(xhr.readyState == 4 && xhr.status ==200){
+//               resolve(JSON.parse(xhr.responseText));
+//           }
+//       }
+//       xhr.send();
+//   })
+  p1.then(data => {
+    console.log(data);
+  })
+  
+//   console.log('aaaa');
+
+// ajax -> fetch
+fetch('http://api.github.com/users/ruanyf')
+    .then(data =>data.json())
+    .then(data =>{
+        // then 回调函数里，return promise 实例 继续thenable
+        console.log('user',data);
+        //回调地狱
+        return fetch('http://api.github.com/users/ruanyf')
+           
+    })
+    .then(data =>data.json())
+    .then(data =>{
+        console.log('repos',data)
+    })
+    .catch(err =>{
+        console.log(err)
+    
+})
+  </script>
+</body>
+</html>
