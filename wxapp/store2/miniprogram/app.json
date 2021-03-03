@@ -13,7 +13,7 @@
     "backgroundColor": "#F0F0F0",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FFF5EE",
-    "navigationBarTitleText": "诚又橙",
+    "navigationBarTitleText": "体育之家",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -23,13 +23,13 @@
     "list": [
       {
         "pagePath": "pages/homepage/homepage",
-        "text": "水果",
+        "text": "首页",
         "iconPath": "images/tabBar/homepage-sel.png",
         "selectedIconPath": "images/tabBar/homepage.png"
       },
       {
         "pagePath": "pages/cart/cart",
-        "text": "购物车",
+        "text": "发现",
         "iconPath": "images/tabBar/cart-sel.png",
         "selectedIconPath": "images/tabBar/cart.png"
       },
@@ -41,6 +41,6 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "sitemapLocation": "sitemap.json"
+
 }

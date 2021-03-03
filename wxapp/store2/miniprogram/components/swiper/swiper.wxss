@@ -4,11 +4,11 @@
 }
 .swiper_box {
   width: 100%;
-  height:500rpx;
+  height:1000rpx;
 }
 .slide-image {
   width: 100%;
   display: inline-block;
   overflow: hidden;
-  height:500rpx;
+  height:1000rpx;
 }

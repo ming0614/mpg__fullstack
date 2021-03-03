@@ -1,0 +1,11 @@
+<!--miniprogram/pages/homepage/homepage.wxml-->
+<!-- <text>miniprogram/pages/homepage/homepage.wxml</text> -->
+<view class="myHomePage" >
+  <!-- 搜索框 -->
+  <my-search></my-search>
+  <!-- 轮播图 -->
+  <view>kkk</view>
+  <view>k2</view>
+  <view>33333</view>
+  
+</view>

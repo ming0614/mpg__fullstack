@@ -1,0 +1,56 @@
+<view class="root">
+
+<form class="form1" bindsubmit="btnSbmit">
+  <view class="top">
+    <view class="inputtMeth">
+      <input class="inputMeth" placeholder="请输入查找用户姓名" id="inputName" name="inputName"></input>
+    </view>
+    <view class="buttonMeth">
+      <button class="BT" form-type="submit">查询</button>
+    </view>
+  </view>
+</form>
+<!-- <view class="content"> -->
+   <!-- <view class="content1" wx:for="{{userPart}}" wx:key="{{userPart}}">  -->
+    <!-- <navigator url="../user/user?_id={{item._id}}"> -->
+      <!-- <text class="textMeth1">姓名：</text> -->
+      <!-- <text class="textMeth2">{{item.name}}</text> -->
+       <view class="fruit-container">
+      <block wx:for="{{userPart}}" wx:key="userPart">
+           
+
+        <view class="fruit-item" bindtap="tapToDetail"
+        data-fid="{{item._id}}" wx:if="{{item.onShow}}">
+          <view class="fruit-image">
+            <image src="{{item.imgUrl}}" mode="aspectFill"/>
+          </view>
+          <view class="fruit-info">
+            <view class="line1">
+              <text class="name">{{item.name}}</text>
+            </view>
+            <view class="line2">
+              <view class="price">
+                <text>${{item.price}}</text>
+                <text class="unit">{{item.unit}}</text>
+              </view>
+              <image src="../../images/icon/cart4.png" mode="aspectFit" 
+              catchtap="addCartByHome" data-fid="{{item._id}}" />
+            </view>
+          </view>
+        </view>
+            
+
+      </block>
+    </view>
+    
+      <!-- <text class="textMeth1">已购买:</text> -->
+      <!-- <text class="textMeth2">{{item.number}}盒\n</text> -->
+      <!-- <text class="textMeth1">症状：</text> -->
+      <!-- <text class="textMeth2">{{item.symptom}}</text>  -->
+      
+    <!-- </navigator> -->
+   <!-- </view>  -->
+ 
+<!-- </view> -->
+
+</view>

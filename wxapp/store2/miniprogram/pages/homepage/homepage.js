@@ -7,13 +7,58 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     fruitInfo: [],
     offline: false, // 打烊
     isShow: false,
     imgUrls: [
-      'https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/152869/36/733/129848/5f6da644E8c640b50/35117f17f08456ad.jpg!q70.dpg.webp',
-      'https://m.360buyimg.com/mobilecms/s843x843_jfs/t1/149571/38/9289/117895/5f6da644E784f911b/21a284afecffdb4f.jpg!q70.dpg.webp'
+      'https://6d70-mpg-8ghafon5a7e64e30-1304585125.tcb.qcloud.la/11.jpg?sign=85aa5b34f17f9dffc80c90366857439d&t=1611747615',
+      'https://6d70-mpg-8ghafon5a7e64e30-1304585125.tcb.qcloud.la/12.jpg?sign=cd5a996ecbe058d306b8629b98156ac0&t=1611747638',
+      'https://6d70-mpg-8ghafon5a7e64e30-1304585125.tcb.qcloud.la/13.jpg?sign=0acd37612b30620b6c75edd64d55069b&t=1611747655',
+      'https://6d70-mpg-8ghafon5a7e64e30-1304585125.tcb.qcloud.la/14.jpg?sign=faada2fc983345ac42000f78f9a93843&t=1611747670'
     ],
+    motto: 'Hello World',
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    navData: [
+      {
+        text: '首页'
+      },
+      {
+        text: '热点快讯'
+      },
+      {
+        text: 'NBA'
+      },
+      {
+        text: 'CBA'
+      },
+      {
+        text: 'FIBA'
+      },
+      {
+        text: '欧冠'
+      },
+      {
+        text: '西甲'
+      },
+      {
+        text: '中超'
+      },
+      {
+        text: '英超'
+      },
+      {
+        text: '下课'
+      }
+    ],
+    currentTab: 0,
+    navScrollLeft: 0,
+  
+
+    
+  
     activeTypeId: 0,
     typeCat: [ /** 类型的数据配置 */
       {
@@ -30,6 +75,73 @@ Page({
       }
     ]
   },
+  onLoad: function () {
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
+  
+ 
+ 
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          pixelRatio: res.pixelRatio,
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth
+        })
+      },
+    })
+  },
+  switchNav(event) {
+    var cur = event.currentTarget.dataset.current;
+    //每个tab选项宽度占1/5
+    var singleNavWidth = this.data.windowWidth / 5;
+    //tab选项居中                            
+    this.setData({
+      navScrollLeft: (cur - 2) * singleNavWidth
+    })
+    if (this.data.currentTab == cur) {
+      return false;
+    } else {
+      this.setData({
+        currentTab: cur
+      })
+    }
+  },
+  switchTab(event) {
+    console.log(event);
+    var cur = event.detail.current;
+    var singleNavWidth = this.data.windowWidth / 5;
+    this.setData({
+      currentTab: cur,
+      navScrollLeft: (cur - 2) * singleNavWidth
+    });
+  },
+
+
   // 加入购物车
   addCartByHome(e) {
     const id = e.currentTarget.dataset.fid;
