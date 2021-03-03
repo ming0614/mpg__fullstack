@@ -1,0 +1,15 @@
+{
+  "name": "nginx",
+  "version": "1.0.0",
+  "description": "nginx 静态网页 http服务\r 动态 node \r 1. centos node\r     - nginx wget taobao mirrors .tar.tz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.13.1"
+  }
+}
