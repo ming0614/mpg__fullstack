@@ -2,6 +2,7 @@
 // es6 module typescript=> => js  
 import express from 'express';
 import postRouter from '../post/post.router';
+import { defaultErrorHandler } from './app.middleware';
 const app = express();
 const bodyParser = require('body-parser');
 // app 处于伺服状态 eventEmitter
@@ -13,4 +14,8 @@ app.use(  //函数
     //文章模块的路由，删 改 查
     postRouter,
 )
+
+
+// 处理各种错误 
+app.use(defaultErrorHandler);
 export default app;

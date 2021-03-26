@@ -1,16 +1,19 @@
-//文章模板的路由
-
+// 文章模板的路由, 
 import express from 'express';
 import * as postController from './post.controller';
+import { authGard } from '../auth/auth.middleware';
+const router = express.Router();  // 好像是switch
+// GET 获得
 
-const router = express.Router();
-//GET 获得
-// 创建内容
-router.post('/posts',postController.store)
+/**
+ * 创建内容
+ */
+// 检查有没有登录 next
+router.post('/posts', authGard, postController.store)
 
-// 获取文章列表
+/**
+ * 获取文章列表
+ */
 // router.get('/posts')
 
-
-
-export default router ;
+export default router;
