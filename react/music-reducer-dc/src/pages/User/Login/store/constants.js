@@ -1,0 +1,2 @@
+export default CHANGE_USER_INFO = "CHANGE_USER_INFO";
+export default CHANGE_LOGIN_STATUS = "CHANGE_LOGIN_STATUS";
