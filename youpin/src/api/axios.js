@@ -3,6 +3,8 @@ import qs from 'qs';
 axios.defaults.baseURL = "http://127.0.0.1:3002";
 axios.defaults.timeout = 10000;
 axios.defaults.withCredentials = true;
+//配置axios 请求头 中的content-type为指定类型
+// 服务器 处理 请求体  
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 // axios.defaults.transformRequest = data => qs.stringify(data);
 /* 
