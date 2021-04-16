@@ -1,12 +1,9 @@
 import React from 'react';
+import Home from './Home'
+import Detail from './Detail'
+import Edit from './Edit'
 
-import Home from './Home';
-import Detail from './Detail';
-import Edit from './Edit';
-
-
-import { BrowserRouter as Router,Switch,Route,Link } from 'react-router-dom';
-
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 const RouterMap = () => {
   return <Router>
@@ -23,4 +20,5 @@ const RouterMap = () => {
     </Switch>
   </Router>
 }
+
 export default RouterMap

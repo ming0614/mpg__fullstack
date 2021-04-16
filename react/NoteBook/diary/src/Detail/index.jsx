@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavBar, Icon, List } from 'antd-mobile';
 import { getQueryString } from '../utils'
 import { useHistory, Link } from 'react-router-dom'
+import axios from '../utils/axios'
 
 const Detail = () => {
   const id = getQueryString('id')
+  console.log(id);
   const history = useHistory()
+
+  const [detail, setDetail] = useState({})
+  useEffect(() => {
+    axios.post(`/detail/${id}`).then(({data}) => {
+      console.log(data);
+    })
+  }, [])
+  
   return (
     <div className="diary-detail">
       <NavBar
